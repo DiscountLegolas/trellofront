@@ -14,7 +14,7 @@ import {
   ThemeProvider,
 } from '@mui/material/styles';
 import {getcolors} from '../../Helpers.js';
-const pages = ['Products', 'Pricing', 'Blog',];
+const pages = [ 'Contact',];
 const theme=getcolors();
 function MainPageAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -33,25 +33,7 @@ function MainPageAppBar() {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            LOGO
-          </Typography>
-
+          <img src='/trello-logo-blue.svg' width="100" height="20" sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
@@ -63,7 +45,7 @@ function MainPageAppBar() {
             >
               <MenuIcon />
             </IconButton>
-            <Menu
+            <Menu 
               id="menu-appbar"
               anchorEl={anchorElNav}
               anchorOrigin={{
@@ -123,6 +105,7 @@ function MainPageAppBar() {
             <Button color='anger' variant='contained' href='/signup'>GET TRELLO</Button>
           </Box>
         </Toolbar>
+        <a ></a>
       </Container>
     </AppBar>
     </ThemeProvider>

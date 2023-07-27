@@ -2,7 +2,7 @@ import React from 'react';
 import Button from '@mui/material/Button';
 import styles from '../../../styles/Home.module.css';
 import MainPageAppBar from './navbar';
-import { Box,Typography,Stack,Container } from '@mui/material';
+import { Box,Typography,Stack,Container, TextField } from '@mui/material';
 export default function NoAuth(){
     return <div>
       <MainPageAppBar>
@@ -12,35 +12,31 @@ export default function NoAuth(){
       <Box
           sx={{
             bgcolor: 'background.paper',
-            pt: 8,
-            pb: 6,
           }}
         >
-          <Container maxWidth="sm">
-            <Typography
-              component="h1"
-              variant="h2"
+          <div className="landing-back" maxWidth="sm" style={{display:"flex",paddingLeft:"25px",paddingRight:"25px"}}>
+          <div>
+          <Typography
+              component="h2"
+              variant="h3"
               align="center"
               color="text.primary"
               gutterBottom
             >
-              Album layout
-            </Typography>
-            <Typography variant="h5" align="center" color="text.secondary" paragraph>
-              Something short and leading about the collection below—its contents,
-              the creator, etc. Make it short and sweet, but not too short so folks
-              don&apos;t simply skip over it entirely.
-            </Typography>
-            <Stack
-              sx={{ pt: 4 }}
-              direction="row"
-              spacing={2}
-              justifyContent="center"
-            >
-              <Button variant="contained">Main call to action</Button>
-              <Button variant="outlined">Secondary action</Button>
-            </Stack>
+              Trello brings all your tasks, teammates, and tools together.
+          </Typography>
+          <Typography variant="h5" align="center" color="text.secondary" paragraph>
+            Keep everything in the same place—even if your team <br></br>isn’t.
+          </Typography>
+          <Container sx={{width:"fit-content",display:"flex",justifyContent:"center"}} >
+            <TextField id="outlined-basic" label="E-mail" variant="outlined" />
+            <Button style={{marginLeft:"15px",textTransform:"none"}} variant="contained">Sign up - it’s free!</Button>
           </Container>
+          </div>
+          <div>
+            <img width="100%" src='/TrelloUICollage_4x.png' />
+          </div>
+          </div>
         </Box>
       </main>
 

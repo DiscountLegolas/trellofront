@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import { store } from "./redux/store"
 import App from './App';
+import './App.css'
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

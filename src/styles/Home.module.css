@@ -6,37 +6,6 @@
   justify-content: center;
   align-items: center;
 }
-.loginflex{
-  display: flex;
-  background-image:url("../../public/ocean.jpg");
-  background-size: cover;
-  color: white;
-}
-.signupflex{
-  display: flex;
-  background-image:url("../../public/ocean.jpg");
-  background-size: cover;
-  color: white;
-  min-height: 100%;
-}
-.loginflexsub1{
-  width: 25%;
-  min-height: 100%;
-}
-.loginflexsub2{
-  width: 50%;
-}
-.loginflexsub3{
-  width: 25%;
-  min-height: 100%;
-}
-.spane{
-  width: max-content;
-  height: max-content;
-  text-align: center;
-  margin-top: 40px;
-  margin-bottom: 40px;
-}
 .title a {
   color: #0070f3;
   text-decoration: none;

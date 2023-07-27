@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
+import { Paper } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
 import List from '@mui/material/List';
+import { useDispatch } from "react-redux";
+import { setuser } from "../redux/Slices/UserSlice";
 import AuthService from '../services/authservice'
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
@@ -14,23 +15,11 @@ import ListItemText from '@mui/material/ListItemText';
 import Icon from '@mui/material/Icon';
 import Box from '@mui/material/Box';
 import Alert from '@mui/material/Alert';
-import classes from '../styles/Home.module.css'
+import classes from '../styles/Home.module.css';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-function Copyright(props) {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
 const styles={
   papercontainer:{
     backgroundRepeat: "no-repeat",
@@ -46,6 +35,7 @@ const styles={
 const theme = createTheme();
 
 export default function SignIn() {
+  document.title="Do The Deed|Login"
   const navigate = useNavigate();
   const [open, setOpen] = React.useState('none');
   const [message, setMessage] = React.useState('false');
@@ -54,7 +44,7 @@ export default function SignIn() {
     event.preventDefault();
     loguser();
   };
-
+  const dispatch=useDispatch()
   const [email, setemail] = React.useState('');
   const [pass, setpass] = React.useState('');
   const loguser = async () => {
@@ -73,6 +63,7 @@ export default function SignIn() {
         console.log(data.token);
         if (data.token) {
           localStorage.setItem("user", JSON.stringify({email:email,accessToken:data.token,experation:data.expiration}));
+          dispatch(setuser(JSON.stringify({email:email,accessToken:data.token,experation:data.expiration})));
           navigate("/");
         }
        })
@@ -83,28 +74,21 @@ export default function SignIn() {
   };
 
   return (
-    <div className={classes.loginflex}>
-    <div className={classes.loginflexsub1}>
-    
-    </div>
-    <div style={styles.papercontainer} className={classes.loginflexsub2
-    }>
+    <Box className="login" sx={{height:"100%"}}>
+    <div style={styles.papercontainer}>
       <ThemeProvider theme={theme}>
-        <Container component="main" maxWidth="xs">
-          <CssBaseline />
-          <Box
+        <Container component="main" maxWidth="xs" sx={{padding:"50px"}}>
+          <Paper
             sx={{
-              marginTop: 8,
+              color:"black",
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
-              backgroundColor:"#8B0000",
+              backgroundColor:"white",
               padding:"20px"
             }}
           >
-              <Icon className={classes.spane}>
-                <img style={styles.imageIcon} src="../static/trello-logo-blue.svg"/>
-              </Icon>
+            <img style={styles.imageIcon} src="/trello-logo-blue.svg"/>
             <Typography component="h1" variant="h5">
               Sign in
             </Typography>
@@ -153,20 +137,16 @@ export default function SignIn() {
                 </ListItemButton>
               </ListItem>
               <ListItem disablePadding>
-                <ListItemButton component="a" href="#simple-list">
-                  <ListItemText primary="Don't have an account? Sign Up" />
+                <ListItemButton component="a" href='/signup'>
+                  <ListItemText primary="Don't have an account? Sign Up"  />
                 </ListItemButton>
               </ListItem>
             </List>
           </Box>
-        </Box>
-        <Copyright sx={{ mt: 8, mb: 4 }} />
+        </Paper>
       </Container>
     </ThemeProvider>
     </div>
-    <div className={classes.loginflexsub3}>
-    
-    </div>
-    </div>
+    </Box>
   );
 }

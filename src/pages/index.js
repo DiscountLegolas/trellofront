@@ -5,6 +5,7 @@ import Landing from '../components/LandingPage/Auth/LandingPage';
 
 
 export default function Home() {
+  document.title="Do The Deed|Home"
   const [user,setUser]=useState();
   useEffect(()=>{
     setUser(AuthService.getCurrentUser())

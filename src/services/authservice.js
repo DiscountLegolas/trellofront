@@ -29,7 +29,29 @@ class AuthService {
     };
     return fetch((API_URL + "User"),requestOptions);
   }
-
+  reset(email, pass,confpass,token) {
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        password: pass,
+        confirmPassword: confpass,
+        email: email,
+        token: token
+      })
+    };
+    return fetch((API_URL + "Reset"),requestOptions);
+  }
+  forgot(email) {
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email: email,
+      })
+    };
+    return fetch((API_URL + "Forgot"),requestOptions);
+  }
   getCurrentUser() {
     let date=new Date()
     const user=localStorage.getItem("user");

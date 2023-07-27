@@ -1,8 +1,28 @@
+import { useEffect } from 'react';
 import {
   createTheme,
   PaletteColorOptions,
   ThemeProvider,
 } from '@mui/material/styles';
+
+export const useOutsideAlerter=(ref,callback)=> {
+  useEffect(() => {
+    /**
+     * Alert if clicked on outside of element
+     */
+    function handleClickOutside(event) {
+      if (ref.current && !ref.current.contains(event.target)) {
+        callback(false)
+      }
+    }
+    // Bind the event listener
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      // Unbind the event listener on clean up
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [ref]);
+}
 const requireAuth = () => {
     if(!localStorage.getItem('token')) {
       // go to login route
@@ -21,11 +41,10 @@ export const getcolors=()=>{
   const createColor = (mainColor) => augmentColor({ color: { main: mainColor } });
   const theme = createTheme({
     palette: {
+      primary: {
+        main: '#556B2F',
+      },
       anger: createColor('#F40B27'),
-      blackish:createColor('#606060'),
-      apple: createColor('#5DBA40'),
-      steelBlue: createColor('#5C76B7'),
-      violet: createColor('#BC00A3'),
     },
   });
   return theme;

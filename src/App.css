@@ -1,4 +1,5 @@
 .App {
+  height: 100%;
   text-align: center;
 }
 
@@ -6,13 +7,20 @@
   height: 40vmin;
   pointer-events: none;
 }
-
+#root{
+  height: 100%;
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
+.board-div{
+  height: 100%;
+}
+.board-div>div{
+  height: 100%;
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -27,7 +35,33 @@
 .App-link {
   color: #61dafb;
 }
-
+.CreateCardList{
+  cursor: pointer;
+  background-color: #A6C5E229;
+  border-radius: 8px;
+  color: rgb(182, 194, 207);
+  padding: 8px;
+}
+.CreateCardList>p{
+  padding: 6px 8px;
+}
+.CreateCard:hover{
+  border-radius: 8px;
+  background-color:rgb(34, 39, 43);
+}
+.CreateText{
+  background-color:white;
+  border-radius:8px;
+}
+.CreateText{
+  background-color:rgb(34, 39, 43);
+  border-radius:8px;
+  color: rgb(182, 194, 207);
+}
+.CreateButton{
+  border-radius:8px;
+  margin-top: 5px;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

@@ -2,35 +2,20 @@ import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
 import {useState,useEffect} from 'react';
 import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import Alert from '@mui/material/Alert';
-import AuthService from '../services/authservice';
-import Link from '@mui/material/Link';
+import {Paper} from "@mui/material";
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
-import Icon from '@mui/material/Icon';
 import Box from '@mui/material/Box';
-import classes from '../styles/Home.module.css'
+import classes from '../styles/Home.module.css';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Divider } from '@mui/material';
 
-function Copyright(props) {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
 const styles={
   papercontainer:{
     backgroundRepeat: "no-repeat",
@@ -39,6 +24,7 @@ const styles={
     backgroundSize: 'cover',
     },
     imageIcon: {
+      marginBottom:"10px",
       display: 'block',
       height: '43px',
     },
@@ -53,7 +39,7 @@ export default function SignUp() {
     event.preventDefault();
     adduser();
   };
-
+  document.title="Do The Deed|Sign Up"
   const [username, setusername] = useState('');
   const [email, setemail] = useState('');
   const [pass, setpass] = useState('');
@@ -86,26 +72,21 @@ export default function SignUp() {
        });
   };
   return (
-    <div>
-    <div className={classes.signupflex}>
-    <div className={classes.loginflexsub1}>
-      
-    </div>
-    <div style={styles.papercontainer} className={classes.loginflexsub2}>
+    <Box className="login"  sx={{height:"100%"}}>
+    <div style={styles.papercontainer}>
       <ThemeProvider theme={theme}>
-        <Container component="main" maxWidth="xs">
-          <CssBaseline />
-          <Box
+        <Container component="main" maxWidth="xs" sx={{padding:"50px"}}>
+          <Paper
             sx={{
-              marginTop: 8,
+              color:"black",
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
+              backgroundColor:"white",
+              padding:"20px"
             }}
           >
-              <Icon className={classes.spane}>
-                <img style={styles.imageIcon} src="/trello-logo-blue.svg"/>
-              </Icon>
+            <img style={styles.imageIcon} src="/trello-logo-blue.svg"/>
             <Typography component="h1" variant="h5">
               Sign Up
             </Typography>
@@ -155,21 +136,16 @@ export default function SignUp() {
              <Divider />
             <List>
               <ListItem disablePadding>
-                <ListItemButton component="a" href="#simple-list">
-                  <ListItemText primary="Allready have an account? Sign In" />
+                <ListItemButton component="a" href='/login'>
+                  <ListItemText primary="Allready have an account? Sign In"  />
                 </ListItemButton>
               </ListItem>
             </List>
           </Box>
-        </Box>
-        <Copyright sx={{ mt: 8, mb: 4 }} />
+        </Paper>
       </Container>
     </ThemeProvider>
     </div>
-    <div className={classes.loginflexsub3}>
-      
-      </div>
-    </div>
-    </div>
+    </Box>
   );
 }

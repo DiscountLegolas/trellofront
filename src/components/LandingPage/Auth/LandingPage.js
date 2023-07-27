@@ -5,7 +5,7 @@ import { Box, Typography,Button } from "@mui/material";
 import {Card,CardContent,Grid} from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import {CircularProgress} from "@mui/material";
-import { getWorkplaces } from '../../../../redux/Slices/Workplaceslice';
+import { getWorkplaces } from "../../../redux/Slices/Workplaceslice"
 import WorkPlaceCard from "./WorkPlaceCard";
 import BoardGrid from './BoardGrid';
 export default function Landing(props){
@@ -20,9 +20,11 @@ export default function Landing(props){
   const boards=workplaces.length==0?(
     <Typography variant="h6">You aren't a member of any workspaces yet. Create a workspace</Typography>
 ):(
-    workplaces.map(workplace => (
+    workplaces.map((workplace,index) => 
+    { 
+      return (
         <BoardGrid wors= {workplace} />
-      ))
+      )})
 
 
 )
@@ -46,8 +48,9 @@ const insida=!loaded?(
       wc
   )
   return  <div>
-    <Box sx={{margin:'0px'}}>
+    <Box>
       <LandingPageAppBar user={user} />
+      <div style={{width:"75%"}}>
       <WorkPlacesGrid insid={insid} />
       <div>
         <Box sx={{ flexGrow: 1,marginTop:"50px",border:0 }}>
@@ -63,7 +66,8 @@ const insida=!loaded?(
         </Card>
         </Box>
       </div>
-    </Box> 
+      </div>
+    </Box>
   </div>
     
 }
