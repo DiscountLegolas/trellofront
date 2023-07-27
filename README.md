@@ -5,6 +5,7 @@ This is a Trello clone project built with React and Redux. It aims to replicate 
 
 
 Features
+
 Create, edit, and delete boards.
 Add, edit, and delete lists within each board.
 Manage tasks (cards) within lists - add, move, edit, and delete.
