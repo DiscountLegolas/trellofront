@@ -2,8 +2,7 @@
 
 This is a Trello clone project built with React and Redux. It aims to replicate the basic functionalities of Trello, allowing users to create boards, add lists, and manage tasks within those lists. The frontend is hosted in this repository, and the backend is hosted in a separate repository.
 
-Demo
-A live demo of the Trello clone is available at Trello Clone Demo.
+
 
 Features
 Create, edit, and delete boards.
