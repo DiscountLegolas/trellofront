@@ -6,27 +6,27 @@ This is a Trello clone project built with React and Redux. It aims to replicate 
 
 Features
 
-Create, edit, and delete boards.
+Create, edit, and delete boards.  
 
-Add, edit, and delete lists within each board.
+Add, edit, and delete lists within each board.  
 
-Manage tasks (cards) within lists - add, move, edit, and delete.
+Manage tasks (cards) within lists - add, move, edit, and delete.  
 
-Drag-and-drop functionality for moving tasks between lists.
+Drag-and-drop functionality for moving tasks between lists.  
 
-Responsive design for various screen sizes.
+Responsive design for various screen sizes.  
 
-Technologies Used
+Technologies Used  
 
-React
+React  
 
-Redux
+Redux  
 
-React DnD (Drag and Drop)
+React DnD (Drag and Drop)  
 
-React Router
+React Router  
 
-Axios (for API requests)
+Axios (for API requests)  
 
 Other libraries and dependencies listed in package.json
 
