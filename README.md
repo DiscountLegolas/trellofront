@@ -9,9 +9,9 @@ Features
 Create, edit, and delete boards.  
 Add Member To Workspace 
 Add lists within each board.  
-
+Forgot/Reset Password  
+Sign Up/Login  
 Manage tasks (cards) within lists - add, move, edit, and delete.  
-
 Drag-and-drop functionality for moving tasks between lists.  
 Moving And Editing lists - Upcoming   
 Remove Member From Workplace -Upcoming  
