@@ -1,6 +1,7 @@
 import React from 'react';
 import {styled} from "@mui/material"
 import { alpha } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -63,7 +64,7 @@ function LandingPageAppBar(props) {
   const [selected, setSelected] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-
+  const navigate = useNavigate();
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
@@ -79,7 +80,11 @@ function LandingPageAppBar(props) {
     setAnchorEl(null);
     handleMobileMenuClose();
   };
-
+  const logout = () => {
+    localStorage.removeItem("user")
+    navigate("/login")
+    handleMenuClose();
+  };
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
@@ -102,7 +107,7 @@ function LandingPageAppBar(props) {
       onClose={handleMenuClose}
     >
       <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <MenuItem onClick={logout}>Logout</MenuItem>
     </Menu>
   );
 

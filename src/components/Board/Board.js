@@ -5,7 +5,6 @@ import CardListService from '../../services/cardlist';
 import { styled } from '@mui/material/styles';
 import cardservice from '../../services/cardservice';
 import {createCardList,getBoard} from '../../redux/Slices/BoardSlice';
-
 import DraggableElement from "./DraggableElement";
 import { DragDropContext } from "react-beautiful-dnd";
 import {Grid,TextField,CardContent,CardActionArea,Typography, Button} from "@mui/material";
@@ -53,7 +52,7 @@ const Board = ({
     if (!open) {
       return (
         <div className="CreateCardList" style={{cursor:"pointer"}} onClick={()=>{setOpen(true)}}>
-        <Typography>Create New Card</Typography>
+        <Typography>Create New Card List</Typography>
       </div>
       )
     }
@@ -119,7 +118,7 @@ const Board = ({
   };
   return (
     <>
-      <DragDropContextContainer className="board-back">
+      <DragDropContextContainer style={{backgroundImage:`url(${board.picUrl})`,backgroundSize:"cover" }}>
       <DragDropContext onDragEnd={onDragEnd}>
         <Grid container spacing={2} wrap="nowrap">
           {cardlists.map((cardlist,index) => (

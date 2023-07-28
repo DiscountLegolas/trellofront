@@ -12,10 +12,8 @@ import AuthService from '../services/authservice'
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
-import Icon from '@mui/material/Icon';
 import Box from '@mui/material/Box';
 import Alert from '@mui/material/Alert';
-import classes from '../styles/Home.module.css';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
@@ -132,7 +130,7 @@ export default function SignIn() {
             <Alert sx={{ display: open }} severity="error" variant="filled">{message}</Alert>
             <List>
               <ListItem disablePadding>
-                <ListItemButton>
+                <ListItemButton href='/Forgot'>
                   <ListItemText primary="Forgot password?" />
                 </ListItemButton>
               </ListItem>

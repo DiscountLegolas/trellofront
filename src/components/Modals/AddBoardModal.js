@@ -1,13 +1,47 @@
 import {  useDispatch } from "react-redux";
-import React from "react";
+import React,{useState} from "react";
+import { makeStyles } from '@mui/styles';
 import { createBoard } from '../../redux/Slices/Workplaceslice';
 import { getWorkplaces } from '../../redux/Slices/Workplaceslice';
-import { Box, Typography,Button, Modal,TextField} from "@mui/material";
+import { Box, Typography,Button, Modal,TextField,FormControl, InputLabel, Select, MenuItem} from "@mui/material";
+const useStyles = makeStyles((theme) => ({
+  formControl: {
+    margin: "10px",
+    minWidth: 120,
+  },
+  selectEmpty: {
+    marginTop: "20px",
+  },
+  lbl:{
+    width:"25%"
+  },
+  photoGallery: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+  photoItem: {
+    width: 200,
+    margin: 10,
+  },
+  photo: {
+    width: "400px",
+    height: "320px",
+    border: '1px solid #ddd',
+    borderRadius: 5,
+  },
+  selectedphoto: {
+    width: "400px",
+    height: "320px"
+  }
+}));
+const photos=["/pexels-andrei-tanase-1271620.jpg","/pexels-artem-saranin-1496372.jpg","/pexels-pixabay-235986.jpg","/pexels-todd-trapani-1420440.jpg"]
 export default function AddBoardModal({open,callback,workıd}){
-    const item= {
-        img: 'https://images.unsplash.com/photo-1533827432537-70133748f5c8',
-        title: 'Hats',
-      }
+  const classes = useStyles();
+  const [selectedPhoto, setSelectedPhoto] = useState('');
+
+  const handleChange = (event) => {
+    setSelectedPhoto(event.target.value);
+  };
       const style = {
         position: 'absolute',
         top: '50%',
@@ -23,7 +57,7 @@ export default function AddBoardModal({open,callback,workıd}){
     const [title, settitle] = React.useState('');
     const createboard=()=> {
         callback();
-        dispatch(createBoard({title:title,workplaceıd:workıd}))
+        dispatch(createBoard({title:title,workplaceıd:workıd,picurl:selectedPhoto}))
         dispatch(getWorkplaces())
       }
     return(
@@ -39,16 +73,6 @@ export default function AddBoardModal({open,callback,workıd}){
                 <Typography id="modal-modal-title" variant="h6" component="h2">
                   Create Board
                 </Typography>
-                <div>
-                  <img 
-                  src={`${item.img}?w=164&h=164&fit=crop&auto=format`}
-                  srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
-                  alt={item.title}
-                  loading="lazy"
-                  sx
-                    />
-                </div>
-                
                 <TextField
                 margin="normal"
                 required
@@ -59,6 +83,26 @@ export default function AddBoardModal({open,callback,workıd}){
                 name="Title"
                 autoFocus
                 />
+        <FormControl className={classes.formControl} fullWidth>
+        <InputLabel id="photo-select-label">Select A Photo</InputLabel>
+        <Select
+          labelId="photo-select-label"
+          id="photo-select"
+          displayEmpty
+          onChange={handleChange}
+        >
+          {photos.map((st)=>(
+            <MenuItem value={st} key={st}>
+              <img
+                src={st}
+                alt="Photo"
+                className={classes.selectedphoto}
+              />
+            </MenuItem>
+                  ))}
+
+        </Select>
+        </FormControl>
               <Button
                 type="submit"
                 fullWidth

@@ -1,4 +1,4 @@
-import {Button, Card, CardActions, CardContent, Grid, Paper, Typography,Menu,MenuItem} from "@mui/material";
+import {Button, Card, CardActions, CardContent, Grid, Paper, Typography,Menu,MenuItem,Chip} from "@mui/material";
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import React from "react";
 import { deleteWorkplace } from '../../../redux/Slices/Workplaceslice';
@@ -29,10 +29,10 @@ export default function WorkPlaceCard(props){
       let workplace=props.wors
       return <Grid item key={workplace.workplaceId} sx={{margin:"10px"}} xs={12} md={2}>
         <Paper>
-          <Card className="board-back">
+          <Card>
             <CardContent sx={{cursor:"pointer"}} onClick={()=>{redirecttoworkplace(workplace.workplaceName)}}>
               <Typography sx={{color:"white"}}>
-                {workplace.workplaceName}
+                <Chip label={workplace.workplaceName} style={{backgroundColor:"red",color:"black"}}  />
               </Typography>
             </CardContent>
             <CardActions>

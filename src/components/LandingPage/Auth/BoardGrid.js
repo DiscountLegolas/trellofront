@@ -1,4 +1,4 @@
-import {Button, Card, CardActions,CardActionArea, CardContent, Grid, Paper, Typography,Menu,MenuItem} from "@mui/material";
+import {Button, Card, CardActions,CardActionArea, CardContent, Grid, Paper, Typography,Menu,MenuItem,Chip} from "@mui/material";
 import PeopleIcon from '@mui/icons-material/People';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { useNavigate } from "react-router-dom";
@@ -9,26 +9,28 @@ import React from "react";
 
 export default function BoardGrid(props){
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [id, setCurrentId] = React.useState('');
   const menuopen = Boolean(anchorEl);
   const handleClick = (event) => {
+    console.log(id)
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
     setAnchorEl(null);
   };
   const dispatch=useDispatch();
-      
-  const deleteboard=(id)=>{
-    dispatch(deleteBoard({id:id}))
-    handleClose()
-  }
+  let workplace=props.wors;    
+
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const navigate = useNavigate();
     const redirecttoboard=(id)=>{
       navigate("/Board/"+id)
     }
-      let workplace=props.wors;
+    const deleteboard=()=>{
+      dispatch(deleteBoard({id:id}))
+      handleClose()
+    }
       return <Grid item key={workplace.workplaceId} sx={{backgroundImage:'url("../public/ocean.jpg")',marginBottom:"10px"}} md={12}>
         <Paper>
           <Card >
@@ -58,35 +60,33 @@ export default function BoardGrid(props){
             
           </Card>
           <Grid container sx={{marginTop:"10px"}}>
-          {workplace.boards.map(board=>(
-            <Grid item key={board.id} sx={{backgroundImage:'url("../public/ocean.jpg")',marginRight:"10px"}} xs={12} md={2}>
+          {workplace.boards.map(board=>{
+             return(
+            <Grid item key={board.id} sx={{marginRight:"10px"}} xs={12} md={2}>
             <Paper>
-            <Card>
+            <Card style={{backgroundImage:`url(${board.picUrl})` }}>
             <CardContent sx={{cursor:"pointer"}} onClick={()=>{redirecttoboard(board.id)}}>
-              <Typography>{board.title}</Typography>
+              <Chip label={board.title} style={{backgroundColor:"darkred",color:"white"}}  />
             </CardContent>
             <CardActions>
               <Button variant="contained" size="small" id="basic-button" aria-controls={menuopen ? 'basic-menu' : undefined} aria-haspopup="true" aria-expanded={menuopen ? 'true' : undefined}
-                  onClick={handleClick} sx={{cursor:"pointer"}} endIcon={<MoreVertIcon />}>
+                  onClick={(e)=>{handleClick(e);setCurrentId(board.id)}} sx={{cursor:"pointer"}} endIcon={<MoreVertIcon />}>
                   Options</Button>
                 <Menu
-                  id="basic-menu"
                   anchorEl={anchorEl}
                   open={menuopen}
                   onClose={handleClose}
-                    MenuListProps={{
-                    'aria-labelledby': 'basic-button',
-                  }}
                   >
-                  <MenuItem onClick={()=>{deleteboard(board.id)}}>Delete</MenuItem>
+                  <MenuItem onClick={()=>{deleteboard()}}>Delete</MenuItem>
                   <MenuItem>Add Member</MenuItem>
                   <MenuItem onClick={handleClose}>Remove Member</MenuItem>
                 </Menu>
+
             </CardActions>
           </Card>
             </Paper>
           </Grid>
-          ))}
+          )})}
           <Grid item xs={12} md={2}>
               <Card>
                 <CardActionArea onClick={()=>{handleOpen()}}>

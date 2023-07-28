@@ -22,7 +22,7 @@ export const deleteWorkplace=createAsyncThunk("workplace/delete",async (data)=>{
   return data["id"];
 })
 export const createBoard=createAsyncThunk("board/create",async (data)=>{
-  await BoardService.create(data["title"],data["workplaceıd"]);
+  await BoardService.create(data["title"],data["workplaceıd"],data["picurl"]);
   let response = await workplaceservice.get()
   let json = await response.json();
   return json.workPlaces;
@@ -66,8 +66,8 @@ export const workplaceSlice = createSlice({
       let boardıd=action.payload;
       let wps = state.workplaces;
       let wpindex = state.workplaces.findIndex(x=>x.boards.filter(e => e.id === boardıd).length > 0);
-      let bindex=state.workplaces[wpindex].boards.findIndex(x=>x.id!==boardıd)
-      state.workplaces[wpindex].boards.splice(bindex,1)
+      let bindex=state.workplaces[wpindex].boards.findIndex(x=>x.id===boardıd)
+      console.log(state.workplaces[wpindex].boards.splice(bindex,1))
       state.loaded = true;
     },
   }

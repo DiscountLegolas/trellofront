@@ -10,15 +10,18 @@ class BoardService {
   }
 
 
-  create(Title, workplaceid) {
+  create(Title, workplaceid,picurl) {
+    console.log(picurl)
     const requestOptions = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json','Authorization':"Bearer "+AuthService.getCurrentUser().accessToken },
       body: JSON.stringify({
         Title: Title,
         workplaceid: workplaceid,
+        picUrl: picurl,
       })
     };
+    console.log(requestOptions.body)
     return fetch((API_URL + "Create"),requestOptions);
   }
   delete(İD) {
