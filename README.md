@@ -1,6 +1,6 @@
 # Getting Started with Create React App
 
-This is a Trello clone project built with React and Redux. It aims to replicate the basic functionalities of Trello, allowing users to create boards, add lists, and manage tasks within those lists. The frontend is hosted in this repository, and the backend is hosted in a separate repository.
+This is a Trello clone project built with React and Redux with Back End Made with .net core. It aims to replicate the basic functionalities of Trello, allowing users to create boards, add lists, and manage tasks within those lists. The frontend is hosted in this repository, and the backend is hosted in a separate repository.
 
 
 
@@ -31,7 +31,14 @@ React Router
 
 Axios (for API requests)  
 
-Other libraries and dependencies listed in package.json
+Other libraries and dependencies listed in package.json  
+
+
+
+
+
+
+
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
